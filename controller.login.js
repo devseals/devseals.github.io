@@ -12,38 +12,24 @@ function iniciarSesion() {
 		
     if (validar()) {
 		$.ajax({
-			url: sysapi+"login/owner",
 			method: "POST",
-			dataType: "json",
-			timeout: 0,
+			url: sysapi+"login/owner",
 			data: { 
 				"Username" : "root",
 				"Password": "root"
 			},
-			beforeSend: function () {
-				showLoader();
+			success: function (response) {
+				showSuccess(JSON.stringify(response));
+				console.log(JSON.stringify(response));
 			},
-			async: true,
-			processData: true,
-			cache: false,
-			success: function (response) {				
-				if (response.result !== null) {
-					/*localStorage.setItem("sysusuario", JSON.stringify(response.result));
-					localStorage.setItem("redireccionar", "dashboard");
-					generarPanelSource(response.result.username, response.result.rolid);
-					showSuccess(response.result.nombre);
-					//window.location.href = '../home/index.html?folded=false&bg=&aside=white&brand=white';
-					window.location.href = '../home/index.html';*/
-				}				
-			},
-			error: function (err) {
-				showError("Lo sentimos!, el usuario y/o contraseña ingresado no es correcto");
-			},
-			complete: function () {
-				hideLoader();
+			error: function (response) {				
+				showError(JSON.stringify(response));
+				console.log(JSON.stringify(response));
+				console.log((response));
 			}
 		}).done(function (response) {
 		  console.log(response);
+		  showSuccess('Login');	
 		});		
     }
     else {
