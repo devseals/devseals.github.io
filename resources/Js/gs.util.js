@@ -1,7 +1,7 @@
 ﻿var sysname;
 var syshelp ="https://cors-anywhere.herokuapp.com/"
 var sysapi = syshelp+'http://testmobile1.gear.host/api/';
-//var sysapi = 'http://localhost/services/api/';
+//var sysapi = 'http://localhost:49220/api/';
 
 function showSuccess(message) {
     setTimeout(function () {
