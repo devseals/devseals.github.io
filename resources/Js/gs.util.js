@@ -1,5 +1,6 @@
 ﻿var sysname;
-var sysapi = 'http://testmobile1.gear.host/api/';
+var syshelp ="https://cors-anywhere.herokuapp.com/"
+var sysapi = syshelp+'http://testmobile1.gear.host/api/';
 //var sysapi = 'http://localhost/services/api/';
 
 function showSuccess(message) {
@@ -73,11 +74,19 @@ function showSuccessRight(message) {
 }
 
 function setSession(key) {
-    localStorage.setItem("syssession", key);
+    window.localStorage.setItem("sysusuario", key);
 }
 
 function getSession() {
-    return localStorage.getItem("syssession");
+    return JSON.parse(window.localStorage.getItem("sysusuario"));
+}
+
+function setToken(key) {
+    window.localStorage.setItem("token", key);
+}
+
+function getToken() {
+    return JSON.parse(window.localStorage.getItem("token"));
 }
 
 var isMobile = {

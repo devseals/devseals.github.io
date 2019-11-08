@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+    <script>
+        //if (localStorage.getItem("sysusuario") == null || localStorage.getItem("sysusuario") == undefined)
+        //    window.location.href = '../index.html';
+    </script>
+    <meta charset="utf-8" />
+    <title>TrackTruck</title>
+    <meta name="description" content="Responsive, Bootstrap, BS4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="../../Resources/assets/images/logo.svg">
+    <meta name="apple-mobile-web-app-title" content="Flatkit">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="../../Resources/assets/images/logo.svg">
+
+    <link rel="stylesheet" href="../resources/Css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="../resources/Css/bootstrap.min.css" type="text/css" />
+
+    <link rel="stylesheet" href="../resources/Css/assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../resources/Css/toastr.min.css" />
+    <link rel="stylesheet" href="../resources/Css/all.css" />
+
+    <link rel="stylesheet" href="../resources/Css/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="../resources/Css/kendo.material.min.css" />
+    <link rel="stylesheet" href="../resources/Css/kendo.material.mobile.min.css" />
+
+    <link rel="stylesheet" href="../resources/Css/app.min.css" type="text/css" />
+
+</head>
+<body>
+    <div class="app" id="app">
+        <div id="aside" class="app-aside fade box-shadow-x nav-expand white" aria-hidden="true">
+            <div class="sidenav modal-dialog dk white">
+                <div class="navbar lt" style="background-color:#19222D">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="../../Resources/images/logo.png" alt="." style="height:30px">
+                        <span class="hidden-folded d-inline" style="color:white">&nbsp; &nbsp; TrackTruck</span>
+                    </a>
+                </div>
+                <div class="flex hide-scroll">
+                    <div class="scroll">
+                        <div class="nav-border nav-text" data-nav>
+                            <ul class="nav bg" id="panelbar"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-shrink lt">
+                    <div class="nav-fold">
+                        <a class="d-flex p-2-3" data-toggle="dropdown">
+                            <span class="avatar w-28 grey hide">J</span>
+                            <img src="../../Resources/assets/images/a9.jpg" alt="Usuario" class="w-28 circle">
+                        </a>
+                        <div class="dropdown-menu  w pt-0 mt-2 fadeIn">
+                            <br />
+                            <a class="dropdown-item" onclick="IrLogin()">Salir</a>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="app-content box-shadow-4 box-radius-4" role="main">
+            <div class="content-header white  box-shadow-4" id="content-header">
+                <div class="navbar navbar-expand-lg" style="background-color:#19222D">
+                    <a class="d-lg-none mx-2" data-toggle="modal" data-target="#aside">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M80 304h352v16H80zM80 248h352v16H80zM80 192h352v16H80z" /></svg>
+                    </a>
+                    <div class="navbar-text nav-title flex" id="pageTitle" style="color:white"></div>
+
+                    <ul class="nav flex-row order-lg-2">
+                        <li class="dropdown d-flex align-items-center">
+                            <a href="#" data-toggle="dropdown" class="d-flex align-items-center">
+                                <span class="avatar w-32">
+                                    <img src="../../Resources/assets/images/a9.jpg" alt="Usuario">
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right w pt-0 mt-2 animate fadeIn">
+                                <br />
+                                <a class="dropdown-item" onclick="IrLogin()">Salir</a>
+                                <br />
+                            </div>
+                        </li>
+                        <li class="d-lg-none d-flex align-items-center">
+                            <a href="#" class="mx-2" data-toggle="collapse" data-target="#navbarToggler">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M64 144h384v32H64zM64 240h384v32H64zM64 336h384v32H64z" /></svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="collapse navbar-collapse no-grow order-lg-1" id="navbarToggler">
+                        <form class="input-group m-2 my-lg-0">
+                            <a>
+                                <span style="color:white">¿Conectado?&nbsp;&nbsp;</span>
+                                <input type="checkbox" id="cbActivacion1">
+                            </a>
+                            &nbsp;&nbsp;
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="content-main " id="content-main">
+                <div id="content-page">
+                </div>
+            </div>
+            <div class="content-footer white " id="content-footer">
+                <div class="d-flex p-3">
+                    <span class="text-sm text-muted flex">&copy; Copyright. VCA Perú</span>
+                    <div class="text-sm text-muted">Version 5.0.4</div>
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="modal fade" id="loading" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true"
+                 style="padding-top:200px;z-index:99999;height:100%">
+                <div class="modal-dialog" style="max-width:120px">
+                    <div class="modal-content loader">
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+
+    <div id="setting">
+        <div class="setting dark-white rounded-bottom" id="theme">
+            <a href="#" data-toggle-class="active" data-target="#theme" class="dark-white toggle">
+                <i class="fa fa-gear text-primary fa-spin"></i>
+            </a>
+            <div class="box-header">
+                <strong>Configuración de Temas</strong>
+            </div>
+            <div class="box-divider"></div>
+            <div class="box-body">
+                <p id="settingLayout">
+                    <label class="md-check my-1 d-block">
+                        <input type="checkbox" name="fixedAside">
+                        <i></i>
+                        <span>Fixed Aside</span>
+                    </label>
+                    <label class="md-check my-1 d-block">
+                        <input type="checkbox" name="fixedContent">
+                        <i></i>
+                        <span>Fixed Content</span>
+                    </label>
+                    <label class="md-check my-1 d-block">
+                        <input type="checkbox" name="folded">
+                        <i></i>
+                        <span>Folded Aside</span>
+                    </label>
+                    <label class="md-check my-1 d-block">
+                        <input type="checkbox" name="container">
+                        <i></i>
+                        <span>Boxed Layout</span>
+                    </label>
+                    <label class="md-check my-1 d-block">
+                        <input type="checkbox" name="ajax">
+                        <i></i>
+                        <span>Ajax load page</span>
+                    </label>
+                    <label class="pointer my-1 d-block" data-toggle="fullscreen" data-plugin="screenfull" data-target="fullscreen">
+                        <span class="ml-1 mr-2 auto">
+                            <i class="fa fa-expand d-inline"></i>
+                            <i class="fa fa-compress d-none"></i>
+                        </span>
+                        <span>Fullscreen mode</span>
+                    </label>
+                </p>
+                <p>Colores:</p>
+                <p>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="primary">
+                        <i class="primary"></i>
+                    </label>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="accent">
+                        <i class="accent"></i>
+                    </label>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="warn">
+                        <i class="warn"></i>
+                    </label>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="info">
+                        <i class="info"></i>
+                    </label>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="success">
+                        <i class="success"></i>
+                    </label>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="warning">
+                        <i class="warning"></i>
+                    </label>
+                    <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                        <input type="radio" name="theme" value="danger">
+                        <i class="danger"></i>
+                    </label>
+                </p>
+                <div class="row no-gutters">
+                    <div class="col">
+                        <p>Logo</p>
+                        <p>
+                            <label class="radio radio-inline m-0 mr-1 ui-check">
+                                <input type="radio" name="brand" value="dark-white">
+                                <i class="light"></i>
+                            </label>
+                            <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                                <input type="radio" name="brand" value="dark">
+                                <i class="dark"></i>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col mx-2">
+                        <p>Menú</p>
+                        <p>
+                            <label class="radio radio-inline m-0 mr-1 ui-check">
+                                <input type="radio" name="aside" value="white">
+                                <i class="light"></i>
+                            </label>
+                            <label class="radio radio-inline m-0 mr-1 ui-check ui-check-color">
+                                <input type="radio" name="aside" value="dark">
+                                <i class="dark"></i>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p>Tema</p>
+                        <div class="clearfix">
+                            <label class="radio radio-inline ui-check">
+                                <input type="radio" name="bg" value="">
+                                <i class="light"></i>
+                            </label>
+                            <label class="radio radio-inline ui-check ui-check-color">
+                                <input type="radio" name="bg" value="dark">
+                                <i class="dark"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <center>
+        <div class="modal fade" id="mcerrarsesion" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-hidden="true" style="z-index:99991;margin-top: 6%;overflow-y: auto;">
+            <div class="modal-dialog" id="mcerrarsesion-dialog">
+                <div class="modal-content" style="width:300px;">
+                    <div class="modal-header titulo-filtro" id="mcerrarsesion-titulo" style="background-color:white;text-align:left;">
+                        <div class="input-group flex">
+                            <div class="form-control px-0 no-bg no-border no-shadow search">&nbsp;Seleccione un motivo&nbsp;&nbsp;</div>
+                            <span class="input-group-btn btn btn-sm btn-icon btn-rounded white">
+                                <i class="fas fa-power-off text-danger"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="mcerrarsesion-body" style="height:120px;overflow-y: auto;background-color:#F3F6F9;text-align:left;">
+                        <div class="input-group flex">
+                            <input id="mcerrarsesion-motivo" type="text" class="form-control small" placeholder="Seleccione una opción">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+
+    <script src="../resources/Js/jquery-3.2.1.min.js"></script>
+    <script src="../resources/Js/kendo.all.min.js"></script>
+    <script src="../resources/Js/toastr.min.js"></script>
+    <script src="../resources/Js/gs.util.js"></script>
+
+    <script src="../resources/Js/popper.min.js"></script>
+    <script src="../resources/Js/bootstrap.min.js"></script>
+    <script src="../resources/Js/bootstrap-checkbox.js" defer></script>
+
+    <script src="../resources/Js/pace.min.js"></script>
+    <script src="../resources/Js/pjax.js"></script>
+    <script src="../resources/Js/lazyload.config.js"></script>
+    <script src="../resources/Js/lazyload.js"></script>
+    <script src="../resources/Js/plugin.js"></script>
+    <script src="../resources/Js/nav.js"></script>
+    <script src="../resources/Js/scrollto.js"></script>
+    <script src="../resources/Js/toggleclass.js"></script>
+    <script src="../resources/Js/theme.js"></script>
+    <!-- <script src="../resources/Js/ajax.js"></script>
+    <script src="../resources/Js/app.js"></script> -->
+
+    <script src="controller.home.js"></script>
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            background-color: rgba( 255, 255, 255, .8 );
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .nav-text {
+            padding: 0px;
+        }
+
+        .k-grid-content {
+            min-height: 80px;
+        }
+    </style>
+</body>
+</html>
