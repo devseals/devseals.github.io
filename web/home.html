@@ -2,8 +2,8 @@
 <html lang="es-PE">
 <head>
     <script>
-        //if (localStorage.getItem("sysusuario") == null || localStorage.getItem("sysusuario") == undefined)
-        //    window.location.href = '../index.html';
+        if (localStorage.getItem("sysusuario") == null || localStorage.getItem("sysusuario") == undefined)
+            window.location.href = '../index.html';
     </script>
     <meta charset="utf-8" />
     <title>TrackTruck</title>
@@ -286,10 +286,10 @@
     <script src="../resources/Js/scrollto.js"></script>
     <script src="../resources/Js/toggleclass.js"></script>
     <script src="../resources/Js/theme.js"></script>
-    <!-- <script src="../resources/Js/ajax.js"></script>
-    <script src="../resources/Js/app.js"></script> -->
+    <script src="../resources/Js/ajax.js"></script>
+    <script src="../resources/Js/app.js"></script>
 
-    <script src="controller.home.js"></script>
+    <script src="home.controller.js"></script>
     <style>
         .loader {
             border: 16px solid #f3f3f3; /* Light grey */
