@@ -73,9 +73,14 @@ function consultar() {
                 width: 160
             },
             {
+                template: "#: content #",
+                title: "Descripción"
+            },
+            {
                 field: "date",
                 template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-ddTHH:mm:ss'), 'dd/MM/yyyy HH:mm:ss') #",
-                title: "Fecha"
+                title: "Fecha",
+                width: 160
             }
         ]
     });
